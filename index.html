@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Shopping List</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
@@ -17,28 +18,27 @@
             <input type="text" class="form-control" id="floatingInput" placeholder="Enter items here">
             <label for="floatingInput">Enter your item</label>
         </div>
-        <div class="alert alert-primary d-none fs-5" id="void" role="alert">
+        <div class="alert alert-primary fs-5 animate__animated animate__headShake animate__infinite" style="display: none;" id="voids" role="alert">
             Please enter an item to your list.
         </div>
         <button onclick="submit()" id="addItem" class="btn btn-dark w-100">Add Item</button>
     </div>
 
-    
     <div id="show" class="tablu">
         <div class="tablu1">
             <h2>No Items Yet!</h2>
         </div>
-        
     </div>
-    <div class="butonss">
+
+    <div class="butonss" id="allbtn" style="display: none;">
         <button onclick="deleteFirst()" class="btn btn-info butin p-3">Delete First Item</button>
         <button onclick="deleteLast()" class="btn btn-primary butin p-3">Delete Last Item</button>
-        <button onclick="deleteany()" class="btn btn-success butin p-3">Delete Any Item(s)</button>
+        <button onclick="deleteAny()" class="btn btn-success butin p-3">Delete Any Item(s)</button>
         <button onclick="editItem()" class="btn btn-warning butin p-3">Edit Item</button>
         <button onclick="addStart()" class="btn btn-danger butin p-3">Add Item to Start</button>
         <button onclick="deleteAll()" class="btn btn-secondary butin p-3">Delete All Items</button>
     </div>
-    
+
 
 
 

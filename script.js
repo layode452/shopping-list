@@ -1,14 +1,15 @@
 var cart = []
-const click = document.getElementById ('addItem')
-const voids = document.getElementById ('void')
+var voids = document.getElementById ('voids');
+const click = document.getElementById ('addItem');
+var allbtn = document.getElementById ('allbtn')
+// const voids = document.getElementById ('void')
 
 function submit(){
     if (floatingInput.value == ''){
-        click.addEventListener('click', () =>{
-            voids.classList.remove('d-none');
-            voids.classList.add('d-block');
-        });
+        voids.style.display = 'block'
     }else {
+        voids.style.display = 'none'
+        allbtn.style.display = 'block'
         cart.push(floatingInput.value)
         document.getElementById('floatingInput').value = ''
         displayItem()
@@ -27,6 +28,30 @@ function deleteLast(){
 
 function addStart(){
     cart.unshift(document.getElementById('floatingInput').value)
+    displayItem()
+}
+
+function deleteAny(){
+    var start = Number(prompt('Which item number do you want to delete?'))
+    if(start > cart.length){
+        alert('Exceeded the max number in table')
+    }
+    cart.splice(start-1, 1)
+    displayItem()
+}
+
+function deleteAll(){
+    var confirmation = confirm('Are you sure you want to delete items?')
+    if (confirmation == true){
+        cart.splice(0, cart.length)
+        displayItem()
+    }
+}
+
+function editItem(){
+    var edit = Number(prompt('Which item number do you want to edit?'))
+    var replace = prompt('New value')
+    cart.splice(edit-1, 1, replace)
     displayItem()
 }
 
