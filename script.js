@@ -1,4 +1,5 @@
-var cart = [];
+var cart = []
+var newIndex = 0
 var voids = document.getElementById("voids");
 const click = document.getElementById("addItem");
 var allbtn = document.getElementById("allbtn");
@@ -56,10 +57,10 @@ function deleteAny() {
     }
 }
 
-function deleteAll() {
-    var confirmation = confirm("Are you sure you want to delete items?");
+function deleteAll(i) {
+    var confirmation = confirm("Are you sure you want to delete item?");
     if (confirmation == true) {
-        cart.splice(0, cart.length);
+        cart.splice(i, 1);
         displayItem();
     }
 }
@@ -69,11 +70,11 @@ function editItem() {
         erroredits.style.display = "block";
     } else {
         erroredits.style.display = "none";
-        var editsn = Number(document.getElementById("editsn").value);
+        // var editsn = Number(document.getElementById("editsn").value);
         var replaceItem = document.getElementById("editItems").value;
-        cart.splice(editsn - 1, 1, replaceItem);
+        cart.splice(i, 1, replaceItem);
         displayItem();
-        document.getElementById("editsn").value = "";
+        // document.getElementById("editsn").value = "";
         document.getElementById("editItems").value = "";
     }
 }
@@ -87,8 +88,15 @@ function displayItem() {
     tableHTML += "</tr>";
     for (var i = 0; i < cart.length; i++) {
         tableHTML += "<tr>";
-        tableHTML += `<td style = "width:120px;"><small>${i + 1}</small> </td>`;
-        tableHTML += `<td> ${cart[i]}</td>`;
+        tableHTML += `<td style = "width:120px;"><small>${i + 1}</small></td>`;
+        tableHTML += `<td> 
+                <p>${cart[i]}</p>
+                <div class="buttonflex">
+                    <button onclick="deleteAll(${i})" class="btn btn-secondary butin p-2">Delete Item</button>
+
+                    <button class="btn btn-warning butin p-2" data-bs-toggle="modal" data-bs-target="#exampleModal2" onclick="editItem(${i})">Edit Item</button>
+                </div>
+            </td>`;
         tableHTML += "</tr>";
     }
 

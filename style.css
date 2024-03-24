@@ -47,7 +47,12 @@ body{
 }
 
 .butin{
-    width: 173px;
+    width: 450px;
+}
+
+.buttonflex{
+    display: flex;
+    justify-content: space-between;
 }
 
 table{
